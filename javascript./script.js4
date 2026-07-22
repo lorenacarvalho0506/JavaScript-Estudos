@@ -1,0 +1,12 @@
+let pi = 3.14159;
+let R;
+
+function calcularVolume (R) {
+     return (4/3) * pi * (R ** 3);
+}
+
+R = parseInt(prompt(`Raio: `));
+
+let volume = calcularVolume(R);
+
+console.log(`VOLUME = ${volume.toFixed(3)}`);
