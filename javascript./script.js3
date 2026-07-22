@@ -1,0 +1,30 @@
+function calcularValor (matrizPecas) {
+    
+    for(i = 0 ; i < matrizPecas.length; i++) {
+        let numPeca = matrizPecas[i][1];
+        let valorUnidade = matrizPecas[i][2];
+        
+          total += numPeca * valorUnidade;
+    }
+    return total;
+}
+
+let total = 0;
+let matrizPecas = [];
+let linha = 2;
+let coluna = 3;
+
+for (let j = 0; j < linha; j++) {
+    matrizPecas[j] = [];
+    
+    let entrada = prompt(`digite o código, a quantidade e o valor da peça ${j + 1}: `);
+    let valores = entrada.split(" ");
+    
+        for (k = 0; k < coluna; k++) {
+            matrizPecas[j][k] = Number(valores[k]);
+            }
+}
+
+let valorPagar = calcularValor(matrizPecas);
+
+console.log (`VALOR A PAGAR: R$ ${valorPagar.toFixed(2)}`);
