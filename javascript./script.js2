@@ -1,0 +1,21 @@
+function calcularTotal (salarioFixo, totalVendas) {
+    return salarioFixo + (totalVendas * 0.15);
+}
+
+matrizVendedor = [];
+for(let i = 0; i < 3; i++) {
+    matrizVendedor[i] = [
+        prompt(`Qual o nome do ${i + 1}º vendedor? `),
+       parseInt(prompt(`Qual o salário fixo desse vendedor? `)),
+       parseInt(prompt(`Qual foi o total de vendas desse vendedor nesse mês? `))
+        ]
+}
+
+for(i = 0; i < matrizVendedor.length; i++) {
+    let salarioFixo = matrizVendedor[i][1];
+    let totalVendas = matrizVendedor[i][2];
+    
+    total = calcularTotal(salarioFixo, totalVendas);
+    
+    console.log(`TOTAL = ${total.toFixed(2)} U$`)
+}
