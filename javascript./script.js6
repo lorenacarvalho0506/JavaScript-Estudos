@@ -1,0 +1,22 @@
+//função que recebe os valores de entrada, guarda o primeiro valor do array na variavel "maior" que será comparado com os outros valores do array através do loop e guardará o maior valor na variável 'maior'
+function ehMaior (valores) {
+    let maior = valores[0];
+        for(let i = 0; i < valores.length; i++) {
+            if(valores[i] > maior) {
+                maior = valores[i];
+            }
+        }return maior;
+}
+
+//entrada de dados
+let entrada = prompt("Digite os valores que deseja saber qual o maior entre eles separados por espaço: ");
+//criando um array de valores separados por espaço
+let valores = entrada.split(" ");
+
+//convertendo cada um desses valores para Number atraves do loop
+for(let i = 0; i < valores.length; i++){
+    valores[i] = Number(valores[i]);
+}
+let saida = ehMaior(valores);
+
+console.log(`${saida} eh o maior`)
