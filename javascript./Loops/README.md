@@ -1,10 +1,10 @@
-# Laços de Repetição (Loops) em JavaScript
+# Loops em JavaScript
 
-Os **laços de repetição**, também chamados de **loops**, são estruturas utilizadas para executar um determinado bloco de código várias vezes.
+Loops são estruturas usadas para **repetir um bloco de código** várias vezes.
 
-Eles são úteis quando precisamos repetir uma operação sem escrever o mesmo código diversas vezes.
+Eles são úteis quando precisamos executar a mesma ação várias vezes sem precisar escrever o código repetidamente.
 
-Por exemplo, imagine que precisamos imprimir os números de `1` até `5`. Sem um loop, poderíamos fazer:
+Exemplo:
 
 ```js
 console.log(1);
@@ -14,7 +14,7 @@ console.log(4);
 console.log(5);
 ```
 
-Com um `for`, podemos fazer a mesma coisa de forma muito mais simples:
+Podemos fazer a mesma coisa usando um `for`:
 
 ```js
 for (let i = 1; i <= 5; i++) {
@@ -22,33 +22,17 @@ for (let i = 1; i <= 5; i++) {
 }
 ```
 
-O loop permite que o computador execute automaticamente as repetições enquanto uma determinada condição for verdadeira.
-
 ---
 
-# 1. Estrutura básica de um loop
+## `for`
 
-Existem diferentes tipos de loops em JavaScript. Os principais são:
+O `for` é usado principalmente quando sabemos quantas vezes queremos repetir alguma coisa.
 
-* `for`
-* `while`
-* `do...while`
-* `for...of`
-* `for...in`
-
-Cada um é adequado para determinadas situações.
-
----
-
-# 2. Loop `for`
-
-O `for` é provavelmente o loop mais utilizado quando sabemos ou conseguimos determinar a quantidade de repetições.
-
-Sua estrutura básica é:
+Estrutura:
 
 ```js
 for (inicialização; condição; incremento) {
-    // código que será repetido
+    // código
 }
 ```
 
@@ -60,7 +44,7 @@ for (let i = 0; i < 5; i++) {
 }
 ```
 
-Esse código imprime:
+Resultado:
 
 ```text
 0
@@ -70,62 +54,46 @@ Esse código imprime:
 4
 ```
 
-## Como o `for` funciona?
-
-Podemos dividir o funcionamento em três partes:
+### Como funciona?
 
 ```js
 for (let i = 0; i < 5; i++) {
 ```
 
-### 1. Inicialização
+Temos 3 partes:
 
-```js
-let i = 0;
+```text
+let i = 0   → inicialização
+i < 5       → condição
+i++         → incremento
 ```
 
-É executada apenas uma vez, antes do início do loop.
+A execução acontece nessa ordem:
 
-Nesse caso, criamos a variável `i` e começamos com o valor `0`.
+```text
+1. cria i com valor 0
+2. verifica se i < 5
+3. executa o código
+4. aumenta i em 1
+5. verifica a condição novamente
+6. repete
+```
 
-### 2. Condição
+Quando `i` chegar a `5`, a condição:
 
 ```js
 i < 5
 ```
 
-Antes de cada repetição, essa condição é verificada.
-
-Se for `true`, o código dentro do `for` será executado.
-
-Se for `false`, o loop termina.
-
-### 3. Incremento
-
-```js
-i++
-```
-
-Depois que o bloco de código é executado, `i` é incrementado em `1`.
-
-Portanto:
-
-```text
-i = 0 → executa
-i = 1 → executa
-i = 2 → executa
-i = 3 → executa
-i = 4 → executa
-i = 5 → condição falsa → termina
-```
+será falsa e o loop termina.
 
 ---
 
-# 3. Contador
+## Contador
 
-Uma utilização muito comum do `for` é como contador.
+O `for` também pode ser usado simplesmente para contar.
 
-Exemplo:
+### Contando de 1 até 10:
 
 ```js
 for (let i = 1; i <= 10; i++) {
@@ -133,22 +101,7 @@ for (let i = 1; i <= 10; i++) {
 }
 ```
 
-Resultado:
-
-```text
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-```
-
-Também podemos contar de trás para frente:
+### Contando de 10 até 1:
 
 ```js
 for (let i = 10; i >= 1; i--) {
@@ -156,33 +109,10 @@ for (let i = 10; i >= 1; i--) {
 }
 ```
 
-Resultado:
-
-```text
-10
-9
-8
-7
-6
-5
-4
-3
-2
-1
-```
-
-O operador `--` diminui o valor da variável em `1`.
-
----
-
-# 4. Incrementos diferentes
-
-Não somos obrigados a aumentar o contador apenas de `1` em `1`.
-
-Podemos utilizar outros valores.
+### Pulando de 2 em 2:
 
 ```js
-for (let i = 0; i <= 20; i += 2) {
+for (let i = 0; i <= 10; i += 2) {
     console.log(i);
 }
 ```
@@ -196,46 +126,13 @@ Resultado:
 6
 8
 10
-12
-14
-16
-18
-20
 ```
-
-Nesse caso:
-
-```js
-i += 2
-```
-
-é equivalente a:
-
-```js
-i = i + 2
-```
-
-Também podemos utilizar:
-
-```js
-i += 5
-```
-
-ou:
-
-```js
-i *= 2
-```
-
-dependendo do objetivo do algoritmo.
 
 ---
 
-# 5. Loop `while`
+# `while`
 
-O `while` também executa um bloco enquanto uma condição for verdadeira.
-
-Sua estrutura é:
+O `while` também serve para repetir código, mas sua estrutura é diferente.
 
 ```js
 while (condição) {
@@ -264,36 +161,9 @@ Resultado:
 4
 ```
 
-A principal diferença em relação ao `for` é que, no `while`, a inicialização e a alteração da variável normalmente ficam fora e dentro do bloco.
+Nesse caso, precisamos tomar cuidado para alterar a variável que controla a condição.
 
-No `for`:
-
-```js
-for (let i = 0; i < 5; i++) {
-    console.log(i);
-}
-```
-
-No `while`:
-
-```js
-let i = 0;
-
-while (i < 5) {
-    console.log(i);
-    i++;
-}
-```
-
-Os dois podem produzir o mesmo resultado.
-
----
-
-# 6. Cuidado com loops infinitos
-
-É importante garantir que a condição do loop eventualmente se torne falsa.
-
-Por exemplo:
+Se fizermos:
 
 ```js
 let i = 0;
@@ -303,11 +173,9 @@ while (i < 5) {
 }
 ```
 
-Esse código possui um problema.
+O valor de `i` nunca muda.
 
-A variável `i` nunca é alterada.
-
-Portanto:
+Então:
 
 ```text
 i = 0
@@ -317,38 +185,17 @@ i = 0
 ...
 ```
 
-A condição `i < 5` continuará sendo verdadeira para sempre.
+O loop nunca termina.
 
-Isso cria um **loop infinito**.
-
-Uma forma de corrigir:
-
-```js
-let i = 0;
-
-while (i < 5) {
-    console.log(i);
-    i++;
-}
-```
-
-Agora `i` aumenta até chegar a `5`, fazendo a condição se tornar falsa.
+Isso é chamado de **loop infinito**.
 
 ---
 
-# 7. Loop `do...while`
+# `do...while`
 
-O `do...while` é parecido com o `while`, mas existe uma diferença importante:
+O `do...while` é parecido com o `while`, mas existe uma diferença:
 
-> O bloco de código é executado pelo menos uma vez.
-
-Estrutura:
-
-```js
-do {
-    // código
-} while (condição);
-```
+> O código é executado pelo menos uma vez.
 
 Exemplo:
 
@@ -361,7 +208,7 @@ do {
 } while (i < 5);
 ```
 
-Mesmo que `i < 5` seja falso desde o começo, o código será executado uma vez.
+Mesmo que `i < 5` seja falso, o `console.log()` será executado uma vez.
 
 Resultado:
 
@@ -369,39 +216,27 @@ Resultado:
 10
 ```
 
-Isso acontece porque a condição só é verificada **depois** da execução do bloco.
-
-Comparação:
-
-### `while`
+No `while`, a condição é verificada antes:
 
 ```js
-let i = 10;
-
-while (i < 5) {
-    console.log(i);
+while (condição) {
+    // código
 }
 ```
 
-Não executa nenhuma vez.
-
-### `do...while`
+No `do...while`, a condição é verificada depois:
 
 ```js
-let i = 10;
-
 do {
-    console.log(i);
-} while (i < 5);
+    // código
+} while (condição);
 ```
-
-Executa uma vez.
 
 ---
 
-# 8. `for...of`
+# `for...of`
 
-O `for...of` é utilizado principalmente para percorrer os **valores** de estruturas iteráveis, como arrays e strings.
+O `for...of` é muito usado para percorrer os **valores** de um array.
 
 Exemplo:
 
@@ -421,9 +256,7 @@ banana
 laranja
 ```
 
-Nesse caso, a variável `fruta` recebe diretamente cada valor do array.
-
-Podemos pensar assim:
+A variável `fruta` recebe cada valor do array.
 
 ```text
 fruta → "maçã"
@@ -433,9 +266,9 @@ fruta → "laranja"
 
 ---
 
-# 9. `for...in`
+# `for...in`
 
-O `for...in` é utilizado para percorrer as **propriedades/chaves** de um objeto.
+O `for...in` é usado principalmente para percorrer as **propriedades** de um objeto.
 
 Exemplo:
 
@@ -459,7 +292,13 @@ idade
 cidade
 ```
 
-Podemos acessar o valor utilizando a chave:
+Podemos acessar o valor usando:
+
+```js
+pessoa[propriedade]
+```
+
+Exemplo:
 
 ```js
 for (const propriedade in pessoa) {
@@ -475,7 +314,7 @@ idade 21
 cidade Fortaleza
 ```
 
-De forma simplificada:
+De forma simples:
 
 ```text
 for...of → valores
@@ -484,9 +323,13 @@ for...in → propriedades/chaves
 
 ---
 
-# 10. Loops aninhados
+# Loops aninhados
 
-Quando colocamos um loop dentro de outro loop, temos um **laço aninhado**.
+Quando temos um `for` dentro de outro `for`, isso é chamado de **laço aninhado** (ou loop dentro de loop).
+
+O laço principal controla quantas vezes o bloco geral será repetido.
+
+Já o laço interno executa todas as suas repetições para cada repetição do laço externo.
 
 Exemplo:
 
@@ -500,11 +343,7 @@ for (let i = 0; i < 3; i++) {
 }
 ```
 
-O loop externo controla as repetições principais.
-
-Para cada repetição do loop externo, o loop interno executa **todas as suas repetições**.
-
-O funcionamento é:
+Funcionamento:
 
 ```text
 i = 0
@@ -520,7 +359,7 @@ i = 2
     j = 1
 ```
 
-Portanto, o resultado será:
+Resultado:
 
 ```text
 0 0
@@ -531,67 +370,25 @@ Portanto, o resultado será:
 2 1
 ```
 
-Uma forma de entender:
+Ou seja:
 
-> Para cada repetição do loop externo, o loop interno começa novamente e executa do início ao fim.
+> Para cada repetição do laço externo, o laço interno executa do começo ao fim.
+
+Nesse exemplo:
+
+```text
+3 repetições do i
+×
+2 repetições do j
+=
+6 execuções
+```
 
 ---
 
-# 11. Quantidade de repetições em loops aninhados
+# Loops aninhados com 3 níveis
 
-Considere:
-
-```js
-for (let i = 0; i < 3; i++) {
-
-    for (let j = 0; j < 2; j++) {
-        console.log(i, j);
-    }
-
-}
-```
-
-O loop externo executa `3` vezes.
-
-O loop interno executa `2` vezes para cada execução do externo.
-
-Então:
-
-```text
-3 × 2 = 6
-```
-
-O `console.log()` será executado **6 vezes**.
-
-Se tivermos:
-
-```js
-for (let i = 0; i < 10; i++) {
-
-    for (let j = 0; j < 10; j++) {
-
-        console.log(i, j);
-
-    }
-
-}
-```
-
-Teremos:
-
-```text
-10 × 10 = 100
-```
-
-execuções.
-
-Isso é importante para entender o custo de determinados algoritmos.
-
----
-
-# 12. Três ou mais loops aninhados
-
-Também é possível colocar mais loops dentro de outros:
+Também podemos colocar um loop dentro de outro loop dentro de outro:
 
 ```js
 for (let i = 0; i < 3; i++) {
@@ -599,9 +396,7 @@ for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
 
         for (let k = 0; k < 3; k++) {
-
             console.log(i, j, k);
-
         }
 
     }
@@ -615,15 +410,13 @@ Nesse caso:
 3 × 3 × 3 = 27
 ```
 
-O código interno será executado `27` vezes.
-
-Quanto mais loops aninhados existem, maior pode ser o custo de execução do algoritmo.
+O código mais interno será executado `27` vezes.
 
 ---
 
-# 13. `break`
+# `break`
 
-O `break` é utilizado para **interromper completamente um loop**.
+O `break` serve para **parar o loop**.
 
 Exemplo:
 
@@ -648,17 +441,15 @@ Resultado:
 4
 ```
 
-Quando `i` chega a `5`, o `break` é executado e o loop termina imediatamente.
+Quando `i` chega a `5`, o `break` encerra o loop.
 
 ---
 
-# 14. `continue`
+# `continue`
 
-O `continue` funciona de maneira diferente.
+O `continue` não encerra o loop.
 
-Ele não encerra o loop.
-
-Ele apenas faz o programa **pular a iteração atual** e continuar com a próxima.
+Ele apenas **pula a repetição atual**.
 
 Exemplo:
 
@@ -682,24 +473,20 @@ Resultado:
 4
 ```
 
-Quando `i` é `2`, o `continue` faz o código abaixo dele ser ignorado naquela repetição.
+Quando `i` é `2`, o código abaixo do `continue` não é executado naquela repetição.
 
-O loop continua normalmente.
-
-### Diferença
+Diferença:
 
 ```text
-break    → encerra o loop
-continue → pula apenas a iteração atual
+break    → para o loop
+continue → pula a repetição atual
 ```
 
 ---
 
-# 15. Percorrendo arrays com loops
+# Percorrendo arrays com `for`
 
-Loops são muito utilizados para percorrer arrays.
-
-Exemplo:
+Podemos usar um `for` para percorrer um array.
 
 ```js
 const numeros = [10, 20, 30, 40, 50];
@@ -719,123 +506,125 @@ Resultado:
 50
 ```
 
-Aqui, `i` representa o **índice** do array.
-
-Os índices são:
+O `i` representa o índice do array.
 
 ```text
-Índice:  0   1   2   3   4
-Valor:  10  20  30  40  50
+índice →  0   1   2   3   4
+valor  → 10  20  30  40  50
 ```
 
-Por isso usamos:
+Então:
 
 ```js
-numeros[i]
-```
-
-Quando:
-
-```js
-i = 0
-```
-
-temos:
-
-```js
-numeros[0]
-```
-
-Quando:
-
-```js
-i = 1
-```
-
-temos:
-
-```js
-numeros[1]
+numeros[0] // 10
+numeros[1] // 20
+numeros[2] // 30
 ```
 
 E assim por diante.
 
 ---
 
-# 16. `length` em loops
+# `.length`
 
-Uma prática muito comum é utilizar `.length` para determinar até onde o loop deve percorrer um array.
+O `.length` retorna a quantidade de elementos de um array.
+
+Exemplo:
 
 ```js
-const nomes = ["Ana", "Carlos", "João", "Maria"];
+const numeros = [10, 20, 30, 40, 50];
 
-for (let i = 0; i < nomes.length; i++) {
-    console.log(nomes[i]);
+console.log(numeros.length);
+```
+
+Resultado:
+
+```text
+5
+```
+
+Por isso podemos fazer:
+
+```js
+for (let i = 0; i < numeros.length; i++) {
+    console.log(numeros[i]);
 }
 ```
 
-`nomes.length` retorna:
-
-```text
-4
-```
-
-Como os índices começam em `0`, o último índice é:
-
-```text
-3
-```
-
-Por isso usamos:
+É importante usar:
 
 ```js
-i < nomes.length
+i < numeros.length
 ```
 
 e não:
 
 ```js
-i <= nomes.length
+i <= numeros.length
 ```
 
-Se utilizássemos `<=`, tentaríamos acessar:
+Porque os índices começam em `0`.
 
-```js
-nomes[4]
+Se o array possui 5 elementos:
+
+```text
+índices:
+0
+1
+2
+3
+4
 ```
 
-que não existe.
+Não existe:
+
+```text
+5
+```
 
 ---
 
-# 17. Loops para procurar valores
+# Loop + `if`
 
-Podemos utilizar loops para procurar elementos dentro de arrays.
+É muito comum usar loops junto com condições.
 
-Exemplo:
+Exemplo: mostrar apenas números pares.
 
 ```js
-const numeros = [10, 25, 30, 45, 50];
+for (let i = 1; i <= 10; i++) {
 
-const procurado = 30;
-
-for (let i = 0; i < numeros.length; i++) {
-
-    if (numeros[i] === procurado) {
-        console.log("Número encontrado!");
-        break;
+    if (i % 2 === 0) {
+        console.log(i);
     }
 
 }
 ```
 
-Quando o número `30` é encontrado, o `break` encerra o loop.
+Resultado:
+
+```text
+2
+4
+6
+8
+10
+```
+
+O `%` retorna o resto da divisão.
+
+```js
+10 % 2 // 0
+```
+
+Como o resto é `0`, sabemos que o número é divisível por `2`.
 
 ---
 
-# 18. Loops para acumular valores
+# Acumulador
 
-Outra utilização muito comum é somar valores.
+Loops também podem ser usados para acumular valores.
+
+Exemplo:
 
 ```js
 const numeros = [10, 20, 30, 40];
@@ -855,9 +644,7 @@ Resultado:
 100
 ```
 
-A variável `soma` funciona como um **acumulador**.
-
-Seu funcionamento é:
+O funcionamento é:
 
 ```text
 soma = 0
@@ -868,166 +655,15 @@ soma = 30 + 30 → 60
 soma = 60 + 40 → 100
 ```
 
----
-
-# 19. Loop para calcular uma média
-
-Podemos combinar um acumulador com um contador.
-
-```js
-const notas = [7, 8, 9, 6];
-
-let soma = 0;
-
-for (let i = 0; i < notas.length; i++) {
-    soma += notas[i];
-}
-
-const media = soma / notas.length;
-
-console.log(media);
-```
-
-Resultado:
-
-```text
-7.5
-```
+A variável `soma` é um **acumulador**.
 
 ---
 
-# 20. Loops e condições
+# Loops e matrizes
 
-Loops frequentemente são utilizados junto com `if`.
+Loops aninhados são muito usados para percorrer matrizes.
 
 Exemplo:
-
-```js
-for (let i = 1; i <= 10; i++) {
-
-    if (i % 2 === 0) {
-        console.log(i);
-    }
-
-}
-```
-
-Nesse caso, o loop percorre os números de `1` até `10`.
-
-O `if` verifica quais são pares.
-
-Resultado:
-
-```text
-2
-4
-6
-8
-10
-```
-
-O operador `%` retorna o resto da divisão.
-
-Por exemplo:
-
-```js
-10 % 2
-```
-
-resulta em:
-
-```text
-0
-```
-
-Por isso podemos verificar se um número é par usando:
-
-```js
-numero % 2 === 0
-```
-
----
-
-# 21. Loop infinito com `for`
-
-Também podemos criar loops infinitos propositalmente.
-
-Por exemplo:
-
-```js
-for (;;) {
-    console.log("Executando...");
-}
-```
-
-A ausência da condição faz com que o loop não tenha uma condição de parada.
-
-Outro exemplo:
-
-```js
-while (true) {
-    console.log("Executando...");
-}
-```
-
-Nesse caso, a condição é sempre verdadeira.
-
-Normalmente, um loop infinito precisa de alguma forma de interrupção, como:
-
-```js
-while (true) {
-
-    // código
-
-    if (condicao) {
-        break;
-    }
-}
-```
-
----
-
-# 22. `for` ou `while`?
-
-Não existe uma regra absoluta, mas podemos utilizar uma ideia simples:
-
-### Use `for` quando:
-
-Sabemos a quantidade de repetições ou estamos percorrendo uma estrutura.
-
-```js
-for (let i = 0; i < 10; i++) {
-    console.log(i);
-}
-```
-
-### Use `while` quando:
-
-A repetição depende principalmente de uma condição que pode mudar durante a execução.
-
-```js
-while (senha !== senhaCorreta) {
-    // pedir senha novamente
-}
-```
-
-### Use `do...while` quando:
-
-Precisamos garantir que o código seja executado pelo menos uma vez.
-
-```js
-do {
-    // pedir uma informação
-} while (informacaoInvalida);
-```
-
----
-
-# 23. Loops aninhados com arrays
-
-Os loops aninhados são especialmente úteis para trabalhar com estruturas que possuem mais de uma dimensão.
-
-Por exemplo, uma matriz:
 
 ```js
 const matriz = [
@@ -1037,7 +673,7 @@ const matriz = [
 ];
 ```
 
-Podemos percorrê-la utilizando dois loops:
+Podemos percorrer todos os elementos com dois loops:
 
 ```js
 for (let i = 0; i < matriz.length; i++) {
@@ -1051,73 +687,56 @@ for (let i = 0; i < matriz.length; i++) {
 }
 ```
 
-O primeiro loop percorre as linhas.
+O primeiro `for` percorre as linhas.
 
-O segundo percorre os elementos de cada linha.
-
-Podemos visualizar:
+O segundo `for` percorre os elementos de cada linha.
 
 ```text
 i = 0 → [1, 2, 3]
-          ↑  ↑  ↑
-          j  j  j
-
 i = 1 → [4, 5, 6]
-          ↑  ↑  ↑
-
 i = 2 → [7, 8, 9]
-          ↑  ↑  ↑
 ```
-
-Esse conceito é muito importante para trabalhar com **matrizes, tabelas, jogos e algoritmos**.
 
 ---
 
-# 24. Cuidado com a condição de parada
+# `for` x `while`
 
-Um dos erros mais comuns ao trabalhar com loops é criar uma condição incorreta.
+Os dois podem fazer praticamente a mesma coisa.
 
-Por exemplo:
+### `for`
 
 ```js
-for (let i = 0; i <= 10; i++) {
+for (let i = 0; i < 5; i++) {
     console.log(i);
 }
 ```
 
-Esse código executa:
-
-```text
-0 até 10
-```
-
-Ou seja, `11` vezes.
-
-Já:
+### `while`
 
 ```js
-for (let i = 0; i < 10; i++) {
+let i = 0;
+
+while (i < 5) {
     console.log(i);
+    i++;
 }
 ```
 
-executa:
+Uma forma simples de escolher:
 
 ```text
-0 até 9
+for       → quando a quantidade de repetições é mais previsível
+while     → quando a repetição depende de uma condição
+do...while → quando precisa executar pelo menos uma vez
 ```
-
-Ou seja, `10` vezes.
-
-Essa diferença entre `<` e `<=` é muito importante.
 
 ---
 
-# 25. Complexidade de loops
+# Complexidade de loops
 
-Loops também são importantes quando estudamos a **complexidade de algoritmos**.
+Loops também aparecem quando estudamos **complexidade de algoritmos**.
 
-Um loop simples como:
+Um loop:
 
 ```js
 for (let i = 0; i < n; i++) {
@@ -1127,111 +746,105 @@ for (let i = 0; i < n; i++) {
 
 executa aproximadamente `n` vezes.
 
-Sua complexidade é:
+Complexidade:
 
 ```text
 O(n)
 ```
 
-Agora considere:
+Já dois loops aninhados:
 
 ```js
 for (let i = 0; i < n; i++) {
 
     for (let j = 0; j < n; j++) {
-
         console.log(i, j);
-
     }
 
 }
 ```
 
-Temos aproximadamente:
+Executam aproximadamente:
 
 ```text
 n × n = n²
 ```
 
-execuções.
-
-Sua complexidade é:
+Complexidade:
 
 ```text
 O(n²)
 ```
 
-Por isso loops aninhados podem tornar um algoritmo significativamente mais lento quando a quantidade de dados aumenta.
+Isso significa que, conforme a quantidade de dados aumenta, um algoritmo com vários loops aninhados pode ficar bem mais pesado.
 
 ---
 
-# 26. Resumo
-
-Os principais conceitos relacionados aos loops são:
-
-| Estrutura     | Utilização                                                      |
-| ------------- | --------------------------------------------------------------- |
-| `for`         | Repetições controladas por inicialização, condição e incremento |
-| `while`       | Repetição enquanto uma condição for verdadeira                  |
-| `do...while`  | Executa pelo menos uma vez antes de verificar a condição        |
-| `for...of`    | Percorre valores de estruturas iteráveis                        |
-| `for...in`    | Percorre propriedades/chaves de objetos                         |
-| `break`       | Interrompe o loop                                               |
-| `continue`    | Pula a iteração atual                                           |
-| Loop aninhado | Loop dentro de outro loop                                       |
-| `.length`     | Obtém o tamanho de arrays e strings                             |
-
----
-
-# 27. Ideia principal
-
-Um loop pode ser entendido como uma instrução para o computador:
-
-> "Repita este bloco de código enquanto determinada regra for satisfeita."
-
-Por exemplo:
-
-```js
-for (let i = 0; i < 5; i++) {
-    console.log(i);
-}
-```
-
-Pode ser interpretado como:
+# Resumo
 
 ```text
-Comece com i = 0.
+for
+→ usado para repetir código, geralmente quando temos um contador.
 
-Enquanto i for menor que 5:
-    execute o código.
+while
+→ repete enquanto uma condição for verdadeira.
 
-Depois:
-    aumente i em 1.
+do...while
+→ executa primeiro e verifica a condição depois.
 
-Quando i chegar a 5:
-    pare.
+for...of
+→ percorre os valores.
+
+for...in
+→ percorre propriedades/chaves.
+
+break
+→ encerra o loop.
+
+continue
+→ pula a iteração atual.
+
+loop aninhado
+→ loop dentro de outro loop.
+
+.length
+→ retorna a quantidade de elementos.
+
+O(n)
+→ um loop que cresce proporcionalmente a n.
+
+O(n²)
+→ dois loops aninhados que percorrem n elementos.
 ```
 
-E, quando temos um loop dentro de outro:
+## Ideia principal
 
-```js
-for (let i = 0; i < 3; i++) {
-
-    for (let j = 0; j < 2; j++) {
-
-        // código
-
-    }
-
-}
-```
-
-A ideia passa a ser:
+A lógica de um loop pode ser resumida como:
 
 ```text
-Para cada repetição de i:
-    execute todas as repetições de j.
+inicializa
+    ↓
+verifica a condição
+    ↓
+executa o código
+    ↓
+atualiza a variável
+    ↓
+volta para a condição
+    ↓
+repete
 ```
 
-Essa lógica é fundamental para programação, pois aparece em algoritmos de busca, ordenação, matrizes, processamento de dados, jogos e diversas outras aplicações.
+E em um loop aninhado:
 
+```text
+loop externo
+    ↓
+    loop interno
+        ↓
+        executa todas as repetições
+    ↓
+loop externo avança
+    ↓
+loop interno começa novamente
+```
