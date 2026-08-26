@@ -1,5 +1,3 @@
-Para colocar no GitHub, eu deixaria a explicação mais completa e organizada, incluindo **o que são loops, `for`, `while`, `do...while`, `break`, `continue`, loops aninhados, contadores e complexidade básica**. Isso cria uma documentação que serve como material de estudo.
-
 # Laços de Repetição (Loops) em JavaScript
 
 Os **laços de repetição**, também chamados de **loops**, são estruturas utilizadas para executar um determinado bloco de código várias vezes.
