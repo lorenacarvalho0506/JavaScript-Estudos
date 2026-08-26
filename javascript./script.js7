@@ -1,0 +1,51 @@
+function buscaBinaria(vetor, alvo) {
+    let inicio;
+    let fim;
+    let meio;
+
+    inicio = 0;
+    fim = vetor.length - 1;
+
+    while (inicio <= fim) {
+        meio = parseInt((inicio + fim) / 2);
+
+        if (alvo == vetor[meio]) {
+            return meio;
+        } else if (alvo > vetor[meio]) {
+            inicio = meio + 1;
+        } else {
+            fim = meio - 1;
+        }
+    }
+
+    return -1;
+}
+
+// Declaracao de variaveis
+let entrada;
+let dados;
+let vetor;
+let alvo;
+let indice;
+let i;
+
+// Entrada
+entrada = prompt("Digite os valores ordenados separados por espaco:"); // 7 12 23 45 89
+alvo = parseInt(prompt("Digite o valor procurado:")); // 45
+
+// Processamento
+dados = entrada.split(" ");
+vetor = [];
+
+for (i = 0; i < dados.length; i++) {
+    vetor[i] = parseInt(dados[i]);
+}
+
+indice = buscaBinaria(vetor, alvo);
+
+// Saida
+if (indice != -1) {
+    console.log("Valor encontrado no indice " + indice);
+} else {
+    console.log("Valor nao encontrado");
+}
